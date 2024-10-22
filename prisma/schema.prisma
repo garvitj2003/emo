@@ -15,16 +15,16 @@ datasource db {
 
 model User{
   id Int @id @default(autoincrement())
-  name String
-  email String
+  email String @unique
   password String
-  prompts Prompt[]
+  invitees Invitees[]
 }
 
-model Prompt{
+model Invitees{
   id Int @id @default(autoincrement())
-  prompt String
-  response String
+  emails String
+  inviteFor String
   userId Int
-  author User @relation(fields: [userId], references: [id])
+  inviter User @relation(fields: [userId], references: [id])
+  @@unique([userId, emails])
 }
