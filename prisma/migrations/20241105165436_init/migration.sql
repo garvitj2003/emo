@@ -1,8 +1,9 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
+    "password" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -16,6 +17,9 @@ CREATE TABLE "Invitees" (
 
     CONSTRAINT "Invitees_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Invitees_userId_emails_key" ON "Invitees"("userId", "emails");

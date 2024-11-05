@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 export const Appbar = () => {
   const session = useSession();
   return (
-    <div>
+    <div className="">
       <button
         onClick={() => {
           signIn();

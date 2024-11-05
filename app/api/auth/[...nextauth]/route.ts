@@ -5,7 +5,7 @@ import Credentialsprovider from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     Credentialsprovider({
-      name: "email",
+      name: "Login here",
       credentials: {
         username: { label: "email", type: "text", placeholder: "email" },
         password: {
@@ -26,20 +26,6 @@ const handler = NextAuth({
             id: user.id.toString(),
             email: user.email,
           };
-        }
-        try {
-          const newUser = await prisma.user.create({
-            data: {
-              email: credentials.username,
-              password: credentials.password,
-            },
-          });
-          return {
-            id: newUser.id.toString(),
-            email: newUser.email,
-          };
-        } catch (e) {
-          console.error(e);
         }
         {
           return null;
